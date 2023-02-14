@@ -1,28 +1,11 @@
 import { CgDanger } from 'react-icons/cg';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { BiSave } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as Func from '../../helpers/other/functions';
-import { VscEye, VscEyeClosed } from 'react-icons/vsc';
-import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 // this page is for admin user to enter a admin password that should be validated in the server and determine if their actions will persist. on user sign in they will be redirected here hen try to navigate to the table.
 const AdminAuth = () => {
-  let inputRef = useRef();
-  const showIcon = () => (
-    <VscEye
-      className='h-5 w-5 mr-1'
-      fill='currentColor'
-      stroke='currentColor'
-    />
-  );
-  const hideIcon = () => (
-    <VscEyeClosed
-      className='h-5 w-5 mr-1'
-      fill='currentColor'
-      stroke='currentColor'
-    />
-  );
   const navigate = useNavigate();
   const [adminAuth, setAdminAuth] = useState({
     pass: '',
@@ -59,15 +42,8 @@ const AdminAuth = () => {
               }
               name='pass'
               type='password'
-              //@ts-ignore
-              ref={inputRef}
               className='form-control block w-full px-4 py-2 my-5  text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none'
               placeholder='Password'
-            />
-            <ReactPasswordToggleIcon
-              inputRef={inputRef}
-              showIcon={showIcon}
-              hideIcon={hideIcon}
             />
           </div>
 

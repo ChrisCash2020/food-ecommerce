@@ -15,7 +15,11 @@ body {
   overflow-y: auto;
   cursor: default;
 }
-
+.hide-pass {
+  -webkit-text-security: disc;
+  -moz-text-security: disc;
+  text-security: disc;
+}
 html,
 body,
 section {
