@@ -1,7 +1,7 @@
 import { editProfile, gBody, loginData, userData } from '../other/types';
 import * as Func from '../other/functions';
 import { basicHeader } from '../other/config';
-const API_URL = 'http://localhost:7000/api/auth/';
+const API_URL = 'https://crud-restaurant.herokuapp.com/api/auth/';
 
 // Register user
 //  1. the body needs to be sent as a formDat bc img is a file

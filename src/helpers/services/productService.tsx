@@ -1,7 +1,7 @@
 import { editProductBody, LooseObject } from '../other/types';
 import * as Func from '../other/functions';
 import { basicHeader } from '../other/config';
-const API_URL = 'http://localhost:7000/api/products';
+const API_URL = 'https://crud-restaurant.herokuapp.com/api/products';
 
 // Edit existing product
 const editProduct = async (productData: editProductBody) => {
