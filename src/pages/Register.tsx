@@ -10,8 +10,6 @@ import {
   register,
 } from '../helpers/slices/auth/authSlice';
 import * as Func from '../helpers/other/functions';
-import { VscEye, VscEyeClosed } from 'react-icons/vsc';
-import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 import { GoogleLogin } from '@react-oauth/google';
 import jwtDecode from 'jwt-decode';
 import { gBody } from '../helpers/other/types';
@@ -140,8 +138,6 @@ const Register = () => {
                 onChange={(e) => Func.onChange(e, (newVal) => setBody(newVal))}
                 name='password2'
                 type='password'
-                //@ts-ignore
-                ref={inputRef}
                 className='form-control block w-full px-4 py-2  text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none'
                 placeholder='Comfirm password'
               />
