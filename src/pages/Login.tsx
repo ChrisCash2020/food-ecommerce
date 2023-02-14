@@ -51,8 +51,7 @@ const Login = () => {
       //@ts-ignore;
       Func.handleGoogleLogin(window.google, dispatch, externalLogin);
     }
-    dispatch(refresh());
-  }, [dispatch]);
+  }, []);
   useEffect(() => {
     if (user != null) {
       // the register req to the backend was successful i need to navigate home else reset the auth context
