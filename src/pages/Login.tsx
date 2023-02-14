@@ -11,7 +11,8 @@ import { useAppDispatch, useAppSelector } from '../helpers/hooks/hooks';
 import * as Func from '../helpers/other/functions';
 import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 import ReactPasswordToggleIcon from 'react-password-toggle-icon';
-
+import { GoogleLogin } from '@react-oauth/google';
+import jwtDecode from 'jwt-decode';
 const Login = () => {
   // the body for keeping track of user inputs
   let inputRef = useRef();
@@ -30,6 +31,7 @@ const Login = () => {
     />
   );
   const [body, setBody] = useState({ email: '', password: '' });
+  const [googleLogin, setGoogleLogin] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.auth.user);
@@ -46,19 +48,12 @@ const Login = () => {
       });
   };
   useEffect(() => {
-    //@ts-ignore;
-    if (window.google) {
-      //@ts-ignore;
-      Func.handleGoogleLogin(window.google, dispatch, externalLogin);
-    }
-  }, []);
-  useEffect(() => {
     if (user != null) {
       // the register req to the backend was successful i need to navigate home else reset the auth context
       navigate('/');
     }
-    // dispatch(refresh());
-  }, []);
+    dispatch(refresh);
+  }, [dispatch]);
 
   return (
     <div className='container py-10 h-full m-auto'>
@@ -75,7 +70,21 @@ const Login = () => {
               <button
                 id='loginBtn'
                 className='flex items-center w-36 h-10 bg-white justify-center rounded headingColor px-5 cursor-pointer shadow-sm hover:bg-slate-100'
-              ></button>
+              >
+                <GoogleLogin
+                  onSuccess={(response) => {
+                    //@ts-ignore
+                    const gBody: any = jwtDecode(response.credential);
+                    dispatch(externalLogin(gBody.email)).then(() => {
+                      dispatch(refresh());
+                      navigate('/');
+                    });
+                  }}
+                  onError={() => {
+                    console.log('Login Failed');
+                  }}
+                />
+              </button>
             </div>
             <div className='flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5'>
               <p className='text-center text-textColor text-sm font-semibold mx-4 mb-0'>

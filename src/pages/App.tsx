@@ -23,6 +23,8 @@ import _404Gif from './assets/404.gif';
 import NavModal from '../components/Nav/NavModal';
 import AdminTbl from './Admin/AdminTbl';
 import AdminAuth from './Admin/AdminAuth';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 function App() {
   const dispatch = useAppDispatch();
   const showNavModal = useAppSelector((state: RootState) => state.modal.nav);
@@ -75,14 +77,26 @@ function App() {
               <Route
                 path='/login'
                 element={
-                  user == null ? <Login /> : <_Error text='Already Logged In' />
+                  user == null ? (
+                    <GoogleOAuthProvider
+                      clientId={import.meta.env.VITE_CLIENT_ID}
+                    >
+                      <Login />
+                    </GoogleOAuthProvider>
+                  ) : (
+                    <_Error text='Already Logged In' />
+                  )
                 }
               />
               <Route
                 path='/register'
                 element={
                   user == null ? (
-                    <Register />
+                    <GoogleOAuthProvider
+                      clientId={import.meta.env.VITE_CLIENT_ID}
+                    >
+                      <Register />
+                    </GoogleOAuthProvider>
                   ) : (
                     <_Error text='Already Logged In' />
                   )

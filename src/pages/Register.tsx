@@ -12,6 +12,9 @@ import {
 import * as Func from '../helpers/other/functions';
 import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 import ReactPasswordToggleIcon from 'react-password-toggle-icon';
+import { GoogleLogin } from '@react-oauth/google';
+import jwtDecode from 'jwt-decode';
+import { gBody } from '../helpers/other/types';
 
 const Register = () => {
   let inputRef = useRef();
@@ -40,21 +43,16 @@ const Register = () => {
     password2: '',
     img: '',
   });
+  const [googleLogin, setGoogleLogin] = useState(false);
+
   const { username, email, password, password2, img } = body;
-  useEffect(() => {
-    //@ts-ignore;
-    if (window.google) {
-      //@ts-ignore;
-      Func.handleGoogleRegister(window.google, dispatch, externalRegister);
-    }
-  }, []);
   useEffect(() => {
     if (user != null) {
       // the register req to the backend was successful i need to navigate home else reset the auth context
       navigate('/');
     }
-    // dispatch(refresh());
-  }, []);
+    dispatch(refresh());
+  }, [dispatch]);
   const onSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (password !== password2) {
@@ -100,7 +98,26 @@ const Register = () => {
               <button
                 id='registerBtn'
                 className='flex items-center w-36 h-10 bg-white justify-center rounded headingColor px-5 cursor-pointer shadow-sm hover:bg-slate-100'
-              ></button>
+              >
+                <GoogleLogin
+                  onSuccess={(response) => {
+                    //@ts-ignore
+                    const gBody: any = jwtDecode(response.credential);
+                    const body: gBody = {
+                      username: gBody.name,
+                      email: gBody.email,
+                      img: gBody.picture,
+                    };
+                    dispatch(externalRegister(body)).then(() => {
+                      dispatch(refresh());
+                      navigate('/');
+                    });
+                  }}
+                  onError={() => {
+                    console.log('Login Failed');
+                  }}
+                />
+              </button>
             </div>
             <div className='flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5'>
               <p className='text-center text-textColor text-sm font-semibold mx-4 mb-0'>
