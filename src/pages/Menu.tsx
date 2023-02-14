@@ -1,28 +1,18 @@
-import Main from '../components/Main'
-import Section from '../components/Section'
-import { main, menu } from '../helpers/config'
+import Main from '../components/Other/Main';
+import Section from '../components/Other/Section';
+import { menu } from '../helpers/other/config';
+import { useAppDispatch } from '../helpers/hooks/hooks';
+import { categoryFilter } from '../helpers/slices/other/filterSlice';
 
-const Menu = ({ page }: { page: boolean }) => {
+const Menu = () => {
+  const dispatch = useAppDispatch();
+  dispatch(categoryFilter('Menu'));
   return (
     <>
-      {page ? (
-        <div>
-          <div className='px-6 max-w-screen'>
-            <Section
-              array={menu.tabs}
-              title={menu.title}
-              slider={menu.slider}
-            />
-            <Main arr={main.foods} />
-          </div>
-        </div>
-      ) : (
-        <>
-          <Section array={menu.tabs} title={menu.title} slider={menu.slider} />
-          <Main arr={main.foods} />
-        </>
-      )}
+      {/* @ts-ignore */}
+      <Section array={menu.tabs} title={menu.title} slider={menu.slider} />
+      <Main location='menu' />
     </>
-  )
-}
-export default Menu
+  );
+};
+export default Menu;
