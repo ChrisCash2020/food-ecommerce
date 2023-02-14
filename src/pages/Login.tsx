@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {
-  // externalLogin,
+  externalLogin,
   login,
   refresh,
 } from '../helpers/slices/auth/authSlice';
@@ -11,8 +11,8 @@ import { useAppDispatch, useAppSelector } from '../helpers/hooks/hooks';
 import * as Func from '../helpers/other/functions';
 // import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 // import ReactPasswordToggleIcon from 'react-password-toggle-icon';
-// import { GoogleLogin } from '@react-oauth/google';
-// import jwtDecode from 'jwt-decode';
+import { GoogleLogin } from '@react-oauth/google';
+import jwtDecode from 'jwt-decode';
 const Login = () => {
   // the body for keeping track of user inputs
   // let inputRef = useRef();
@@ -71,7 +71,7 @@ const Login = () => {
                 id='loginBtn'
                 className='flex items-center w-36 h-10 bg-white justify-center rounded headingColor px-5 cursor-pointer shadow-sm hover:bg-slate-100'
               >
-                {/* <GoogleLogin
+                <GoogleLogin
                   onSuccess={(response) => {
                     //@ts-ignore
                     const gBody: any = jwtDecode(response.credential);
@@ -83,7 +83,7 @@ const Login = () => {
                   onError={() => {
                     console.log('Login Failed');
                   }}
-                /> */}
+                />
               </button>
             </div>
             <div className='flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5'>
