@@ -54,7 +54,7 @@ const Register = () => {
       // the register req to the backend was successful i need to navigate home else reset the auth context
       navigate('/');
     }
-    dispatch(refresh());
+    // dispatch(refresh());
   }, []);
   const onSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();

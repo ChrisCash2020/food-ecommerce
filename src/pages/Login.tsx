@@ -58,7 +58,7 @@ const Login = () => {
       // the register req to the backend was successful i need to navigate home else reset the auth context
       navigate('/');
     }
-    dispatch(refresh());
+    // dispatch(refresh());
   }, []);
 
   return (
