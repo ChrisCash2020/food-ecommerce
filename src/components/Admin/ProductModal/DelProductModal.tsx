@@ -13,6 +13,7 @@ import {
 } from '../../../helpers/slices/products/productSlice';
 import { toast } from 'react-toastify';
 import { ItemModalLoader } from '../../Loaders/ItemModalLoader';
+import { DelModalLoader } from '../../Loaders/DelModalLoader';
 const DelProductModal = () => {
   const dispatch = useAppDispatch();
   const showConfirmDelModal = useAppSelector(
@@ -43,25 +44,21 @@ const DelProductModal = () => {
       autoClose: 1000,
     });
     dispatch(toggleLoaderModal(true));
-    dispatch(deleteProducts(delSet))
-      .then(() => {
-        dispatch(toggleLoaderModal(true));
-        setTimeout(() => {
-          closeProductModal('#DelItemModal', undefined, dispatch);
-          dispatch(toggleLoaderModal(false));
-          toast.update(id, {
-            render: 'Product(s} Deleted',
-            type: 'success',
-            isLoading: false,
-            position: 'top-center',
-            autoClose: 1000,
-          });
-        }, 300);
-        dispatch(getProducts());
-      })
-      .catch(() => {
-        toast.error('Something went horibbly wrong');
-      });
+    dispatch(deleteProducts(delSet)).then(() => {
+      dispatch(toggleLoaderModal(true));
+      setTimeout(() => {
+        closeProductModal('#DelItemModal', undefined, dispatch);
+        dispatch(toggleLoaderModal(false));
+        toast.update(id, {
+          render: 'Product(s} Deleted',
+          type: 'success',
+          isLoading: false,
+          position: 'top-center',
+          autoClose: 1000,
+        });
+      }, 300);
+      dispatch(getProducts());
+    });
   };
   console.log(delSet);
   return (
@@ -73,7 +70,7 @@ const DelProductModal = () => {
         >
           {/* <!-- Modal content --> */}
           {showLoaderModal ? (
-            <ItemModalLoader text='Uploading' id='AddItemModal' />
+            <DelModalLoader id='DelItemModal' />
           ) : (
             <div
               id='DelItemModal'

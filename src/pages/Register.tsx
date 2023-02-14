@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import navLogo from '../assets/navLogo.png';
@@ -10,9 +10,27 @@ import {
   register,
 } from '../helpers/slices/auth/authSlice';
 import * as Func from '../helpers/other/functions';
+import { VscEye, VscEyeClosed } from 'react-icons/vsc';
+import ReactPasswordToggleIcon from 'react-password-toggle-icon';
+
 //@ts-ignore;
 const google = window.google;
 const Register = () => {
+  let inputRef = useRef();
+  const showIcon = () => (
+    <VscEye
+      className='h-5 w-5 mr-1'
+      fill='currentColor'
+      stroke='currentColor'
+    />
+  );
+  const hideIcon = () => (
+    <VscEyeClosed
+      className='h-5 w-5 mr-1'
+      fill='currentColor'
+      stroke='currentColor'
+    />
+  );
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
   const user = useSelector((state: RootState) => state.auth.user);
@@ -105,22 +123,36 @@ const Register = () => {
                 placeholder='Email address'
               />
             </div>
-            <div className='mb-6'>
+            <div className='mb-6 relative block'>
               <input
                 onChange={(e) => Func.onChange(e, (newVal) => setBody(newVal))}
                 name='password'
                 type='password'
+                //@ts-ignore
+                ref={inputRef}
                 className='form-control block w-full px-4 py-2  text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none'
                 placeholder='Password'
               />
+              <ReactPasswordToggleIcon
+                inputRef={inputRef}
+                showIcon={showIcon}
+                hideIcon={hideIcon}
+              />
             </div>
-            <div className='mb-6'>
+            <div className='mb-6 relative block'>
               <input
                 onChange={(e) => Func.onChange(e, (newVal) => setBody(newVal))}
                 name='password2'
                 type='password'
+                //@ts-ignore
+                ref={inputRef}
                 className='form-control block w-full px-4 py-2  text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none'
                 placeholder='Comfirm password'
+              />
+              <ReactPasswordToggleIcon
+                inputRef={inputRef}
+                showIcon={showIcon}
+                hideIcon={hideIcon}
               />
             </div>
             <div className='mb-6'>

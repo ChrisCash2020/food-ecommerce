@@ -97,11 +97,11 @@ export function ProductTools() {
             undo ? '' : 'hidden'
           }   bg-gray-50 border-gray-300 pr-2 border-2 group rounded-full w-14 h-14`}
         >
-          <div className='group-hover:flex relative -left-[180%] top-1 hidden'>
+          <div className='group-hover:flex relative -left-[300%] top-1 hidden'>
             <span className='z-10 p-3  text-sm font-medium w-fit  leading-none text-white whitespace-nowrap transition-all duration-300 bg-[#3F3F46] rounded-lg shadow-sm'>
-              Delete
+              Toggle Delete
             </span>
-            <span className='absolute w-3 h-3 z-5 p-2 top-[10px] -right-[65%]  rotate-45 text-sm font-medium  leading-none transition-all duration-300 bg-[#3F3F46] shadow-sm'></span>
+            <span className='absolute w-3 h-3 z-5 p-2 top-[10px] -right-[185%]  rotate-45 text-sm font-medium  leading-none transition-all duration-300 bg-[#3F3F46] shadow-sm'></span>
           </div>
 
           <div className='text-[#3F3F46] flex items-center justify-center w-[3.35rem] h-14 absolute top-0 bottom-0 left-0 right-0 '>

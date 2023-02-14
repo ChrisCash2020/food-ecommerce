@@ -36,7 +36,9 @@ body::-webkit-scrollbar-thumb {
   background-color: #3f803f;
   outline: none;
 }
-
+::-ms-reveal {
+  display: none;
+}
 .headingColor {
   color: rgb(46, 46, 46);
 }

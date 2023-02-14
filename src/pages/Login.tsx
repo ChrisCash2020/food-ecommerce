@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {
@@ -9,10 +9,28 @@ import {
 import { FaSignInAlt } from 'react-icons/fa/index.js';
 import { useAppDispatch, useAppSelector } from '../helpers/hooks/hooks';
 import * as Func from '../helpers/other/functions';
+import { VscEye, VscEyeClosed } from 'react-icons/vsc';
+import ReactPasswordToggleIcon from 'react-password-toggle-icon';
+
 //@ts-ignore;
 const google = window.google;
 const Login = () => {
   // the body for keeping track of user inputs
+  let inputRef = useRef();
+  const showIcon = () => (
+    <VscEye
+      className='h-5 w-5 mr-1'
+      fill='currentColor'
+      stroke='currentColor'
+    />
+  );
+  const hideIcon = () => (
+    <VscEyeClosed
+      className='h-5 w-5 mr-1'
+      fill='currentColor'
+      stroke='currentColor'
+    />
+  );
   const [body, setBody] = useState({ email: '', password: '' });
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -71,13 +89,20 @@ const Login = () => {
                 placeholder='Email address'
               />
             </div>
-            <div className='mb-6'>
+            <div className='mb-6 relative block'>
               <input
                 onChange={(e) => Func.onChange(e, (newVal) => setBody(newVal))}
                 name='password'
                 type='password'
+                //@ts-ignore
+                ref={inputRef}
                 className='form-control block w-full px-4 py-2  text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none'
                 placeholder='Password'
+              />
+              <ReactPasswordToggleIcon
+                inputRef={inputRef}
+                showIcon={showIcon}
+                hideIcon={hideIcon}
               />
             </div>
             <div className='flex justify-between items-center mb-6'>
