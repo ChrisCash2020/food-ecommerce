@@ -17,7 +17,7 @@ import jwtDecode from 'jwt-decode';
 import { gBody } from '../helpers/other/types';
 
 const Register = () => {
-  let inputRef = useRef();
+  let inputRef = useRef(null);
   const showIcon = () => (
     <VscEye
       className='h-5 w-5 mr-1'
@@ -43,7 +43,6 @@ const Register = () => {
     password2: '',
     img: '',
   });
-  const [googleLogin, setGoogleLogin] = useState(false);
 
   const { username, email, password, password2, img } = body;
   useEffect(() => {
@@ -52,7 +51,7 @@ const Register = () => {
       navigate('/');
     }
     dispatch(refresh());
-  }, [dispatch]);
+  }, []);
   const onSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (password !== password2) {
@@ -147,7 +146,6 @@ const Register = () => {
                 onChange={(e) => Func.onChange(e, (newVal) => setBody(newVal))}
                 name='password'
                 type='password'
-                //@ts-ignore
                 ref={inputRef}
                 className='form-control block w-full px-4 py-2  text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none'
                 placeholder='Password'
