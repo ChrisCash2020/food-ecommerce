@@ -13,8 +13,6 @@ import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 
 const Login = () => {
-  //@ts-ignore;
-  const google = window.google;
   // the body for keeping track of user inputs
   let inputRef = useRef();
   const showIcon = () => (
@@ -48,8 +46,10 @@ const Login = () => {
       });
   };
   useEffect(() => {
-    if (google) {
-      Func.handleGoogleLogin(google, dispatch, externalLogin);
+    //@ts-ignore;
+    if (window.google) {
+      //@ts-ignore;
+      Func.handleGoogleLogin(window.google, dispatch, externalLogin);
     }
     dispatch(refresh());
   }, [dispatch]);

@@ -14,8 +14,6 @@ import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 
 const Register = () => {
-  //@ts-ignore;
-  const google = window.google;
   let inputRef = useRef();
   const showIcon = () => (
     <VscEye
@@ -44,8 +42,10 @@ const Register = () => {
   });
   const { username, email, password, password2, img } = body;
   useEffect(() => {
-    if (google) {
-      Func.handleGoogleRegister(google, dispatch, externalRegister);
+    //@ts-ignore;
+    if (window.google) {
+      //@ts-ignore;
+      Func.handleGoogleRegister(window.google, dispatch, externalRegister);
     }
     dispatch(refresh());
   }, [dispatch]);
