@@ -2,34 +2,34 @@ import { useEffect, useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {
-  externalLogin,
+  // externalLogin,
   login,
   refresh,
 } from '../helpers/slices/auth/authSlice';
 import { FaSignInAlt } from 'react-icons/fa/index.js';
 import { useAppDispatch, useAppSelector } from '../helpers/hooks/hooks';
 import * as Func from '../helpers/other/functions';
-import { VscEye, VscEyeClosed } from 'react-icons/vsc';
-import ReactPasswordToggleIcon from 'react-password-toggle-icon';
-import { GoogleLogin } from '@react-oauth/google';
-import jwtDecode from 'jwt-decode';
+// import { VscEye, VscEyeClosed } from 'react-icons/vsc';
+// import ReactPasswordToggleIcon from 'react-password-toggle-icon';
+// import { GoogleLogin } from '@react-oauth/google';
+// import jwtDecode from 'jwt-decode';
 const Login = () => {
   // the body for keeping track of user inputs
-  let inputRef = useRef();
-  const showIcon = () => (
-    <VscEye
-      className='h-5 w-5 mr-1'
-      fill='currentColor'
-      stroke='currentColor'
-    />
-  );
-  const hideIcon = () => (
-    <VscEyeClosed
-      className='h-5 w-5 mr-1'
-      fill='currentColor'
-      stroke='currentColor'
-    />
-  );
+  // let inputRef = useRef();
+  // const showIcon = () => (
+  //   <VscEye
+  //     className='h-5 w-5 mr-1'
+  //     fill='currentColor'
+  //     stroke='currentColor'
+  //   />
+  // );
+  // const hideIcon = () => (
+  //   <VscEyeClosed
+  //     className='h-5 w-5 mr-1'
+  //     fill='currentColor'
+  //     stroke='currentColor'
+  //   />
+  // );
   const [body, setBody] = useState({ email: '', password: '' });
   const [googleLogin, setGoogleLogin] = useState(false);
   const navigate = useNavigate();
@@ -53,7 +53,7 @@ const Login = () => {
       navigate('/');
     }
     dispatch(refresh);
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className='container py-10 h-full m-auto'>
@@ -106,15 +106,15 @@ const Login = () => {
                 name='password'
                 type='password'
                 //@ts-ignore
-                ref={inputRef}
+                // ref={inputRef}
                 className='form-control block w-full px-4 py-2  text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-green-600 focus:outline-none'
                 placeholder='Password'
               />
-              <ReactPasswordToggleIcon
+              {/* <ReactPasswordToggleIcon
                 inputRef={inputRef}
                 showIcon={showIcon}
                 hideIcon={hideIcon}
-              />
+              /> */}
             </div>
             <div className='flex justify-between items-center mb-6'>
               <a
