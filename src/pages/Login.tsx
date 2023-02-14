@@ -12,9 +12,9 @@ import * as Func from '../helpers/other/functions';
 import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 
-//@ts-ignore;
-const google = window.google;
 const Login = () => {
+  //@ts-ignore;
+  const google = window.google;
   // the body for keeping track of user inputs
   let inputRef = useRef();
   const showIcon = () => (
@@ -48,15 +48,18 @@ const Login = () => {
       });
   };
   useEffect(() => {
-    Func.handleGoogleLogin(google, dispatch, externalLogin);
-  }, []);
+    if (google) {
+      Func.handleGoogleLogin(google, dispatch, externalLogin);
+    }
+    dispatch(refresh());
+  }, [dispatch]);
   useEffect(() => {
     if (user != null) {
       // the register req to the backend was successful i need to navigate home else reset the auth context
       navigate('/');
     }
     dispatch(refresh());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className='container py-10 h-full m-auto'>

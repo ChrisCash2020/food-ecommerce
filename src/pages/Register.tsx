@@ -13,9 +13,9 @@ import * as Func from '../helpers/other/functions';
 import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 
-//@ts-ignore;
-const google = window.google;
 const Register = () => {
+  //@ts-ignore;
+  const google = window.google;
   let inputRef = useRef();
   const showIcon = () => (
     <VscEye
@@ -44,15 +44,18 @@ const Register = () => {
   });
   const { username, email, password, password2, img } = body;
   useEffect(() => {
-    Func.handleGoogleRegister(google, dispatch, externalRegister);
-  }, []);
+    if (google) {
+      Func.handleGoogleRegister(google, dispatch, externalRegister);
+    }
+    dispatch(refresh());
+  }, [dispatch]);
   useEffect(() => {
     if (user != null) {
       // the register req to the backend was successful i need to navigate home else reset the auth context
       navigate('/');
     }
     dispatch(refresh());
-  }, [dispatch]);
+  }, []);
   const onSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (password !== password2) {
