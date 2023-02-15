@@ -1,4 +1,4 @@
-# Food E-Commerce - ReactJs, Tailwind, TypeScript, Redux, Spring Boot, PostgreSQL, JWT, Google Auth, Firebase, Docker,
+# Food E-Commerce - ReactJs, Tailwind, TypeScript, Redux, Spring Boot, PostgreSQL, JWT, Google Auth, Firebase, Docker
 
 
 ## Description:
