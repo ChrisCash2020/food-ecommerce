@@ -11,7 +11,7 @@ Actions are sepearted to specific roles such as admin and user, admin as access 
 All actions are available to both roles such as the action to login/register (internal & external) and updating user credentials.
 <br>
 <br>
-<a href="https://movieconnect.netlify.app/" target="_blank" >Live Demo</a>
+<a href="https://toulouse-exotica.netlify.app/" target="_blank" >Live Demo</a>
 > Preview
 <p>
 <img src="https://github.com/ChrisCash2020/Images/blob/master/food/demo.gif" width="500" height="280" />
@@ -44,7 +44,7 @@ npm run dev
 - JWT authentication and authorization
 - One Click Google Login/Register
 - Menu Filtering by category
-- Shopping cart wher users can add food items to their shopping cart and complete purchase
+- Shopping cart where users can add food items to their shopping cart and complete purchase
 - Admin dashboard so owners can log in and manage their menu items
 - Dashboad sorting function for product properties 
 - Toastify info/update/sucess/error handling 
