@@ -3,12 +3,13 @@
 
 ## Description:
 
-This project was made as a way to practice developing full-stack applications with Java Spring Boot.
-This project allows logged in customers to browse and order food items and pay online using a secure payment gateway. 
-The developed the secure backend Rest API with a Docker container with psql where all crud operations require a specified origin.
-The crud operations of fetching products and retreiving credentials is permitted to all while other operations require a JWT authentication token.
-Actions are sepearted to specific roles such as admin and user, admin as access extra operations such as editting product details, adding new products, and deleting products.
-All actions are available to both roles such as the action to login/register (internal & external) and updating user credentials.
+- Developed a food e-commerce website, implementing role-based access control for distinct admin and customer functionalities, resulting in streamlined operations and enhanced user experience.
+- Customers can register/login, update credentials, filter the website's menu, add items to the cart, and checkout.
+- All actions above are available to both roles; however, admin personnel have extra actions, such as adding, editing, and deleting menu items from a dashboard.
+- MVC structured application with React/Redux as the front-end and incorporated a PostgreSQL/Docker container to create a Spring Boot Rest API in the back end.
+- Secured the API to a specified origin and allowed unauthorized access to fetching products and retrieving credentials while requiring a JWT for all other crud operations.
+- Added seamless integration of Google account registration/login functionality, streamlining onboarding process.
+
 <br>
 <br>
 <a href="https://toulouse-exotica.netlify.app/" target="_blank" >Live Demo</a>
