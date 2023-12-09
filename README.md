@@ -9,11 +9,9 @@
 - MVC structured application with React/Redux as the front-end and incorporated a PostgreSQL/Docker container to create a Spring Boot Rest API in the back end.
 - Secured the API to a specified origin and allowed unauthorized access to fetching products and retrieving credentials while requiring a JWT for all other crud operations.
 - Added seamless integration of Google account registration/login functionality, streamlining onboarding process.
-
-<br>
 <br>
 <a href="https://toulouse-exotica.netlify.app/" target="_blank" >Live Demo</a>
-> Preview
+<br>
 <p>
 <img src="https://github.com/ChrisCash2020/Images/blob/master/food/demo.gif" width="500" height="280" />
 </p>
