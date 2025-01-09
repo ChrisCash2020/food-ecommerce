@@ -104,10 +104,10 @@ export const productSlice = createSlice({
         }));
         // The images that are should in the header component
         state.header = [
-          action.payload[29],
+          action.payload[26],
+          action.payload[23],
           action.payload[9],
-          action.payload[32],
-          action.payload[11],
+          action.payload[15],
         ];
       })
       .addCase(getProducts.rejected, (state, action) => {

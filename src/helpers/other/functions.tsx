@@ -204,7 +204,7 @@ export const initialState = {
   detail: undefined,
   price: undefined,
   stock: undefined,
-  category: 'Fruits',
+  category: 'Category',
 };
 // function compares the submitted product to the initial state
 function testProductNoChange(productBody: editProductBody) {

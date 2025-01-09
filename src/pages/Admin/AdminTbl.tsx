@@ -29,7 +29,7 @@ const AdminTbl = () => {
       <AddProductModal />
       <DelProductModal />
 
-      <div className='flex relative items-center justify-center overflow-x-auto mt-3'>
+      <div className='flex relative items-center justify-center overflow-x-auto mt-[180px]'>
         <table className='w-fit text-sm text-left max-[845px]:flex max-[845px]:flex-row max-[845px]:w-screen text-gray-700'>
           <ProductHead setSort={(val: any) => setSort(val)} />
           <tbody className='mx-auto'>
